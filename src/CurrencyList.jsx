@@ -14,17 +14,18 @@ const mapStateToProps = (state) => {
 class CurrencyList extends React.Component {
 
     buildCurrList() {
+        //const style={border: 'solid 1px', margin: `5px`}
         const { currencys } = this.props;
         const allCurrencys = currencys.allCurrencys;
         if (allCurrencys.length === 0) return null;
 
         const listOfCurrencys = allCurrencys.map((c) => [c, currencys.byCurrency[c]])
         return (
-            <ul>
+            <ul className='row row-cols-2 row-cols-sm-3 row-cols-md-5 row-cols-lg-6'>
                 {listOfCurrencys.map(([name, currData]) => (
-                    <li key={name}>
+                    <div className='card bg-dark col'   key={name}>
                         <CurrencyItem name={name} rate={currData.rate} isFavorite={currData.isFavorite} />
-                    </li>))}
+                    </div>))}
             </ul>
         );
     }

@@ -26,14 +26,14 @@ class CurrencyItem extends React.Component {
         const { name, rate, isFavorite, baseCurrency } = this.props;
         const isBase = baseCurrency === name;
         return (
-            <div >
-                <p style={isBase?{color:'red'}:null}>
+            <div className='card-body' style={isFavorite ? { border: 'solid black' } : null}>
+                <p className='h3' style={isBase?{color:'red'}:null}>
                     {name}
                 </p>
-                <p>{rate.toFixed(2)} {baseCurrency}</p>
-                <p>
-                    <button onClick={this.makeFavoriteHandler(name)} style={isFavorite ? { background: 'pink' } : null}>favorite</button>
-                    <button onClick={this.makeBaseHandler(name)} disabled={isBase}>base</button>
+                <p className=''>{rate.toFixed(2)} {baseCurrency}</p>
+                <p className='card-footer'>
+                    <button className='btn-primary' onClick={this.makeFavoriteHandler(name)}>favorite</button>
+                    <button className='btn-success' onClick={this.makeBaseHandler(name)} disabled={isBase}>base</button>
                 </p>
             </div>
         );

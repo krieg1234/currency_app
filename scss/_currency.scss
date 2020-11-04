@@ -1,0 +1,49 @@
+$blockquote-small-color: $gray-600 !default;
+$blockquote-small-font-size: $small-font-size !default;
+$blockquote-font-size: $font-size-base * 1.25 !default;
+
+$spacer: 1rem !default;
+$spacers: map-merge(
+    (
+        0: 0 ,
+        1: ($spacer * 0.25),
+        2: ($spacer * 0.5),
+        3: $spacer,
+        4: ($spacer * 1.5),
+        5: ($spacer * 3)
+    )
+    , $spacers);
+
+.currency {
+    position: relative;
+    display: block;
+
+    margin: 0;
+    padding: map-get($map: $spacers, $key: 5) map-get($map: $spacers, $key: 4) map-get($map: $spacers, $key: 3);
+
+    color: $blockquote-small-color;
+    font-size: $blockquote-small-font-size;
+
+    border-radius: $border-radius;
+    @include box-shadow ($box-shadow);
+
+    &::before {
+        position: absolute;
+        top: -#{map-get($spacers, 4)};
+    
+        font-size: $display1-size; // 6rem
+        font-family: $font-family-serif;
+    
+        content: '“';
+      }
+    
+    & > &-footer {
+        margin: $spacer 0 0;
+        padding-top: map-get($spacers, 2);
+    
+        font-size: $blockquote-small-font-size;
+        font-style: italic;
+    
+        border-top: 1px solid;
+    }
+}
